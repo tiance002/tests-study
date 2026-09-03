@@ -1,21 +1,26 @@
 import requests
 import json
+import os
+
+# 获取当前脚本所在目录，再向上找到项目根目录
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# 拼接完整路径
+config_path = os.path.join(BASE_DIR, "config", "config.json")
+request_path = os.path.join(BASE_DIR, "data", "request_data.json")
+response_path = os.path.join(BASE_DIR, "data", "response_data.json")
 
 # 从配置文件夹获取测试配置
-with open("config/config.json", "r") as json_file:
+with open(config_path, "r", encoding="utf-8") as json_file:
     config = json.load(json_file)
-
 # 从测试数据文件夹获取接口请求数据
-with open('data/request_data.json', 'r') as json_file:
+with open(request_path, "r", encoding="utf-8") as json_file:
     request_data = json.load(json_file)
-
 # 从测试数据文件夹获取接口响应数据
-with open('data/response_data.json', 'r') as json_file:
+with open(response_path, "r", encoding="utf-8") as json_file:
     response_data = json.load(json_file)
 
-
 class TestPytestDemo:
-
     def test_get_demo(self):
         host = config.get("host")
         get_api = config.get("getAPI")
