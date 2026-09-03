@@ -20,7 +20,7 @@ class TestPytestDemo:
             "userId": 1
         }
         # 发起请求
-        response = requests.post(f"{base_url}/posts", requests_data)
+        response = requests.post(f"{base_url}/posts", json=requests_data)
         # 断言
         assert response.status_code == 201
         print(response.json())
