@@ -24,5 +24,5 @@ class TestPytestDemo:
         # 断言
         assert response.status_code == 201
         print(response.json())
-        assert response.json()['userId'] == '1'
+        assert response.json()['userId'] == 1
         assert response.json()['id'] == 101
